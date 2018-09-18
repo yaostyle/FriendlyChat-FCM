@@ -113,8 +113,12 @@ public class MainActivity extends AppCompatActivity {
         mSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: Send messages on click
+                // Send messages on click
+                FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText
+                        .getText().toString(), mUsername, null);
 
+                // Push the update to firebase db
+                mMessagesDatabaseReference.push().setValue(friendlyMessage);
                 // Clear input box
                 mMessageEditText.setText("");
             }
